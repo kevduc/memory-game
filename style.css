@@ -1,5 +1,5 @@
 :root {
-  --theme-primary: gray;
+  --theme-primary: rgb(57, 104, 73);
   --theme-secondary: white;
   --theme-on-primary: white;
 }
@@ -50,7 +50,7 @@ h1 {
 main {
   flex: 1 1 100%;
 
-  padding: 1rem;
+  padding: var(--card-gap);
   display: grid;
   place-content: center;
 }
