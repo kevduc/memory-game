@@ -1,5 +1,3 @@
-/* Photo https://unsplash.com/photos/FnZKE3owM1o by Omid Armin https://unsplash.com/@omidarmin on Unsplash https://unsplash.com/ */
-
 :root {
   --grid-cols: 4;
   --grid-rows: 6;
@@ -81,7 +79,7 @@
 
 .card__face--front {
   background-color: var(--theme-primary);
-  background-image: url('./images/card-back.jpg');
+  background-image: url('./images/card-back.jpg'); /* Photo https://unsplash.com/photos/FnZKE3owM1o by Omid Armin https://unsplash.com/@omidarmin on Unsplash https://unsplash.com/ */
 }
 
 .card__face--back {
