@@ -86,7 +86,7 @@
 
 .card__face--back {
   background-color: var(--theme-on-primary);
-  background-image: url('https://picsum.photos/500/500');
+  /* background-image: url('https://picsum.photos/500/500'); */
 
   transform: rotateY(180deg);
 }

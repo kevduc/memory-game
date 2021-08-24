@@ -1,13 +1,35 @@
-document.addEventListener('DOMContentLoaded', () => {
-  let seed = 1
+const numCards = 24
+const imageSize = 500
 
-  document.querySelectorAll('.card').forEach((card) => {
-    card.querySelector('.card__face--back').style.backgroundImage = `url('https://picsum.photos/seed/${seed++}/500')`
+const numImages = numCards / 2
+const numImagesMax = 100
+const pageNum = Math.floor(Math.floor(numImagesMax / numImages) * Math.random()) + 1
 
-    card.addEventListener('click', () => {
+const fetchJSON = async (url) => await (await fetch(url)).json()
+
+document.addEventListener('DOMContentLoaded', async () => {
+  const images = await fetchJSON(`https://picsum.photos/v2/list?page=${pageNum}&limit=${numImages}`)
+
+  // Change all image urls to request the right size (imageSize)
+  images.forEach((image) => (image.download_url = image.download_url.replace(/\d+\/\d+$/, `${imageSize}`)))
+
+  let card = document.querySelector('.card')
+  const cardContainer = card.parentElement
+
+  let i = 0
+  while (true) {
+    card.addEventListener('click', function () {
       document.querySelector('.card--selected')?.classList.remove('card--selected')
-      card.classList.add('card--selected')
-      card.classList.toggle('card--flipped')
+      this.classList.add('card--selected')
+      this.classList.toggle('card--flipped')
     })
-  })
+
+    const cardBack = card.querySelector('.card__face--back')
+    cardBack.style.backgroundImage = `url('https://picsum.photos/seed/${i + 1}/500')`
+
+    if (++i === numCards) break
+
+    card = card.cloneNode(true)
+    cardContainer.append(card)
+  }
 })
