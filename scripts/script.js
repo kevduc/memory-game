@@ -1,3 +1,5 @@
+import Card from "./card.js"
+
 function randInt(min, max) {
   return Math.floor(Math.random() * (max + 1 - min)) + min
 }
@@ -14,6 +16,8 @@ const randUniq = (n) => {
 
   return arr
 }
+
+const cards = []
 
 const numCards = 24
 const imageSize = 500
@@ -34,6 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   let i = 0
 
   while (true) {
+    cards[i] = new Card(card)
     card.addEventListener('click', cardClick)
 
     if (++i === numCards) break

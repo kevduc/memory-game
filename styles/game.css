@@ -34,7 +34,7 @@
 }
 
 .card {
-  --x-rotation-origin: 80%;
+  --rotation-origin: 120%;
   --duration: 1s;
 
   display: block;
@@ -48,7 +48,7 @@
   transition: transform var(--duration) ease-in-out; /* Only for the card rotation animation */
   transform-style: preserve-3d;
 
-  transform-origin: var(--x-rotation-origin);
+  transform-origin: center var(--rotation-origin);
 }
 
 .card:not(.card--flipped) .card__face--front:hover {
@@ -63,7 +63,7 @@
 }
 
 .card--flipped {
-  transform: rotateY(180deg) translateX(calc(2 * var(--x-rotation-origin) - 100%));
+  transform: rotateZ(10deg) rotateX(180deg) translateY(calc(2 * var(--rotation-origin) - 100%));
 }
 
 .card--selected {
@@ -89,12 +89,12 @@
 
 .card__face--front {
   background-color: var(--theme-primary);
-  background-image: url('./images/card-back.jpg'); /* Photo https://unsplash.com/photos/FnZKE3owM1o by Omid Armin https://unsplash.com/@omidarmin on Unsplash https://unsplash.com/ */
+  background-image: url('../images/card-back.jpg'); /* Photo https://unsplash.com/photos/FnZKE3owM1o by Omid Armin https://unsplash.com/@omidarmin on Unsplash https://unsplash.com/ */
 }
 
 .card__face--back {
   background-color: var(--theme-on-primary);
   /* background-image: url('https://picsum.photos/500/500'); */
 
-  transform: rotateY(180deg);
+  transform: rotateZ(10deg) rotateX(180deg) translateX(-12%) translateY(-1%);
 }
