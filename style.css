@@ -1,6 +1,6 @@
 :root {
   --theme-primary: rgb(57, 104, 73);
-  --theme-secondary: white;
+  --theme-secondary: rgb(195, 209, 198);
   --theme-on-primary: white;
 }
 
@@ -34,7 +34,7 @@ body {
 header {
   background-color: var(--theme-primary);
   color: var(--theme-on-primary);
-  border-bottom: 1px solid #bbb;
+  /* border-bottom: 1px solid #bbb; */
 
   padding: 0.2rem 1rem;
 }
@@ -53,6 +53,9 @@ main {
   padding: var(--card-gap);
   display: grid;
   place-content: center;
+
+  background-color: var(--theme-secondary);
+  background: linear-gradient(125deg, var(--theme-secondary), var(--theme-primary) 200%);
 }
 
 footer {
@@ -67,7 +70,7 @@ footer {
 
   background-color: var(--theme-primary);
   color: var(--theme-on-primary);
-  border-top: 1px solid #bbb;
+  /* border-top: 1px solid #bbb; */
 }
 
 footer a {

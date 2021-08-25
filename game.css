@@ -34,7 +34,10 @@
 }
 
 .card {
-  --rotation-origin: 90%;
+  --x-rotation-origin: 80%;
+  --duration: 1s;
+
+  display: block;
 
   border-radius: 10%;
   position: relative;
@@ -42,18 +45,25 @@
   width: var(--card-size);
   height: var(--card-size);
 
-  transition: transform 1s ease-in-out, box-shadow 100ms ease-out;
+  transition: transform var(--duration) ease-in-out; /* Only for the card rotation animation */
   transform-style: preserve-3d;
 
-  transform-origin: var(--rotation-origin);
+  transform-origin: var(--x-rotation-origin);
 }
 
-.card:is(:not(.card--flipped)):hover {
+.card:not(.card--flipped) .card__face--front:hover {
+  transition: transform 100ms ease-in-out, box-shadow 100ms ease-out; /* Only for the card hover animation */
+
   box-shadow: 0 0 9px 6px var(--theme-primary);
+  transform: scale(1.05);
+}
+
+.card.card--flipped .card__face--front {
+  transition: transform calc(var(--duration) / 2) ease-in-out; /* Should be done scaling down when the card changes side (at half the duration of the card animation) */
 }
 
 .card--flipped {
-  transform: rotateY(180deg) translateX(calc(2 * var(--rotation-origin) - 100%));
+  transform: rotateY(180deg) translateX(calc(2 * var(--x-rotation-origin) - 100%));
 }
 
 .card--selected {
@@ -65,7 +75,7 @@
 
   border: 3px solid var(--theme-on-primary);
   border-radius: inherit;
-  box-shadow: 0 0 0 2px black;
+  box-shadow: 0 0 0 2px var(--theme-primary);
 
   width: 100%;
   height: 100%;
