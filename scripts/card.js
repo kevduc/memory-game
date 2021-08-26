@@ -36,12 +36,16 @@ class Card {
     this.setState('enabled', !this.flipped)
   }
 
+  static zIndex = 0
+
   select() {
     this.setState('selected', true)
+    this.cardElement.style.setProperty('z-index', ++Card.zIndex)
   }
 
   deselect() {
     this.setState('selected', false)
+    this.cardElement.style.removeProperty('z-index')
   }
 
   enable() {
@@ -52,19 +56,19 @@ class Card {
     this.setState('enabled', false)
   }
 
+  click() {
+    if (!this.enabled) return false
+    this.select()
+    this.flip()
+    return true
+  }
+
   // For debug
   show() {
     this.cardElement.style.outline = '5px solid red'
     setTimeout(() => {
       this.cardElement.style.outline = ''
     }, 1500)
-  }
-
-  click() {
-    if (!this.enabled) return false
-    this.select()
-    this.flip()
-    return true
   }
 }
 
