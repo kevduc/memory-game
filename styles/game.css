@@ -70,11 +70,13 @@
   transform-origin: center var(--rotation-origin);
 }
 
-.card:not(.card--disabled) .card__face--front:hover {
-  transition: transform 100ms ease-in-out, box-shadow 100ms ease-out; /* Only for the card hover animation */
+@media (hover: hover) {
+  .card:not(.card--disabled) .card__face--front:hover {
+    transition: transform 100ms ease-in-out, box-shadow 100ms ease-out; /* Only for the card hover animation */
 
-  box-shadow: 0 0 9px 6px var(--theme-primary);
-  transform: scale(1.05);
+    box-shadow: 0 0 9px 6px var(--theme-primary);
+    transform: scale(1.05);
+  }
 }
 
 /* .card__face--front:active {
