@@ -20,7 +20,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   cards = createCards(numCards, cardTemplate)
 
   score = new NumberDisplay(document.querySelector('.score'))
-  tries = new NumberDisplay(document.querySelector('.tries'))
+
+  tries = new NumberDisplay(document.querySelector('.tries'), 'try', 'tries')
+  tries.setLabel(null)
 
   gameInit(cards, images)
 })
@@ -93,7 +95,6 @@ function cardClick(card) {
       setTimeout(cleanUp, 1000)
     } else {
       tries.add(1)
-      console.log(`Tries: ${tries}`)
 
       setTimeout(() => {
         cardsClicked.forEach((card) => card.flip())
