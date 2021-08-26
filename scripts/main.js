@@ -81,26 +81,24 @@ function cardClick(card) {
     remainingCards.forEach((card) => card.disable())
 
     const cleanUp = () => {
-      cardsClicked.forEach((card) => card.deselect())
       remainingCards.forEach((card) => card.enable())
       processing = false
     }
 
     numCardsClicked = 0
+    tries.add(1)
 
     if (cardsClicked[0].id === cardsClicked[1].id) {
       score.add(1)
 
       setTimeout(() => {
         cardsClicked.forEach((card) => card.found())
-        setTimeout(cleanUp, 500)
-      }, 1000)
+        cleanUp()
+      }, 700)
     } else {
-      tries.add(1)
-
       setTimeout(() => {
         cardsClicked.forEach((card) => card.flip())
-        setTimeout(cleanUp, 1000)
+        setTimeout(cleanUp, 300)
       }, 1500)
     }
   }

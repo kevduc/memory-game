@@ -4,6 +4,7 @@ class Card {
     this.backElement = cardElement.querySelector('[class*=back]')
 
     this.id = null
+    this.animationCleanup = null
 
     this.state = {
       flipped: false,
@@ -36,19 +37,20 @@ class Card {
 
   flip() {
     const { flipped } = this.state
-    this.setState({ flipped: !flipped, disabled: flipped })
+    this.setState({ flipped: !flipped, disabled: !flipped, selected: true })
+    this.animationCleanup = setTimeout(() => this.setState({ selected: false }), 1000)
   }
 
   static zIndex = 0
 
   select() {
+    clearTimeout(this.animationCleanup)
     this.setState({ selected: true })
     this.cardElement.style.setProperty('z-index', ++Card.zIndex)
   }
 
   deselect() {
     this.setState({ selected: false })
-
     this.cardElement.style.removeProperty('z-index')
   }
 
@@ -63,8 +65,8 @@ class Card {
   click() {
     const { disabled } = this.state
     if (disabled) return false
-    this.select()
     this.flip()
+    this.select()
     return true
   }
 
