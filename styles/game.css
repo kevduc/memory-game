@@ -3,7 +3,7 @@
   --grid-rows: 6;
 
   --grid-gap-ratio: 0.1;
-  --card-size-w: calc(99vw / (var(--grid-cols) + (var(--grid-cols) + 1) * var(--grid-gap-ratio)));
+  --card-size-w: calc(95vw / (var(--grid-cols) + (var(--grid-cols) + 1) * var(--grid-gap-ratio)));
   --card-size-h: calc((80vh - 4rem) / (var(--grid-rows) + (var(--grid-rows) + 1) * var(--grid-gap-ratio)));
 
   --card-size: min(var(--card-size-w), var(--card-size-h));
@@ -24,6 +24,24 @@
     --grid-cols: 8;
     --grid-rows: 3;
   }
+}
+
+.points,
+.score {
+  font-size: large;
+}
+
+.score {
+  font-weight: bold;
+
+  padding: 0.2rem 0.4rem;
+
+  color: var(--theme-primary);
+  background-color: var(--theme-secondary);
+
+  border-radius: 25%;
+  border: 2px solid var(--theme-on-primary);
+  box-shadow: 0 0 0 2px var(--theme-on-secondary);
 }
 
 .main__content {
@@ -51,19 +69,19 @@
   transform-origin: center var(--rotation-origin);
 }
 
-.card:not(.card--flipped) .card__face--front:hover {
+.card--enabled .card__face--front:hover {
   transition: transform 100ms ease-in-out, box-shadow 100ms ease-out; /* Only for the card hover animation */
 
   box-shadow: 0 0 9px 6px var(--theme-primary);
   transform: scale(1.05);
 }
 
-.card.card--flipped .card__face--front {
-  transition: transform calc(var(--duration) / 2) ease-in-out; /* Should be done scaling down when the card changes side (at half the duration of the card animation) */
+.card--flipped .card__face--front {
+  transition: transform calc(var(--duration) / 2) ease-in-out; /* Animation should be done scaling down when the card changes side (at half the duration of the card animation) */
 }
 
 .card--flipped {
-  transform: rotateZ(10deg) rotateX(180deg) translateY(calc(2 * var(--rotation-origin) - 100%));
+  transform: rotateZ(5deg) rotateX(180deg) translateY(calc(2 * var(--rotation-origin) - 100%));
 }
 
 .card--selected {
@@ -96,5 +114,5 @@
   background-color: var(--theme-on-primary);
   /* background-image: url('https://picsum.photos/500/500'); */
 
-  transform: rotateZ(10deg) rotateX(180deg) translateX(-12%) translateY(-1%);
+  transform: rotateZ(5deg) rotateX(180deg) translateX(-6%) translateY(-0.5%);
 }

@@ -2,32 +2,69 @@ class Card {
   constructor(cardElement) {
     this.cardElement = cardElement
     this.backElement = cardElement.querySelector('[class*=back]')
+
     this.flipped = false
     this.selected = false
+    this.enabled = true
+
+    this.id = null
   }
 
-  setBackImageUrl(url) {
+  setId(id) {
+    this.id = id
+  }
+
+  setBackImageURL(url) {
     this.backElement.style.backgroundImage = `url(${url})`
   }
 
-  set flipped(tf) {
-    this.cardElement.classList[tf ? 'add' : 'remove']('card--flipped')
+  updateClass(stateName) {
+    this.cardElement.classList[this[stateName] ? 'add' : 'remove'](`card--${stateName}`)
   }
 
-  set selected(tf) {
-    this.cardElement.classList[tf ? 'add' : 'remove']('card--selected')
+  updateDisplay() {
+    ;['selected', 'enabled', 'flipped'].forEach((stateName) => this.updateClass(stateName))
+  }
+
+  setState(stateName, value) {
+    this[stateName] = value
+    this.updateDisplay()
   }
 
   flip() {
-    this.flipped = !this.flipped
+    this.setState('flipped', !this.flipped)
+    this.setState('enabled', !this.flipped)
   }
 
   select() {
-    this.selected = true
+    this.setState('selected', true)
   }
 
   deselect() {
-    this.selected = false
+    this.setState('selected', false)
+  }
+
+  enable() {
+    this.setState('enabled', true)
+  }
+
+  disable() {
+    this.setState('enabled', false)
+  }
+
+  // For debug
+  show() {
+    this.cardElement.style.outline = '5px solid red'
+    setTimeout(() => {
+      this.cardElement.style.outline = ''
+    }, 1500)
+  }
+
+  click() {
+    if (!this.enabled) return false
+    this.select()
+    this.flip()
+    return true
   }
 }
 

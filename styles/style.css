@@ -2,6 +2,7 @@
   --theme-primary: rgb(57, 104, 73);
   --theme-secondary: rgb(195, 209, 198);
   --theme-on-primary: white;
+  --theme-on-secondary: black;
 }
 
 *,
@@ -36,15 +37,20 @@ header {
   color: var(--theme-on-primary);
   /* border-bottom: 1px solid #bbb; */
 
-  padding: 0.2rem 1rem;
+  padding: 1rem 1rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .title {
   white-space: nowrap;
 }
 
-h1 {
-  margin: 1rem 0;
+h1,
+h2 {
+  margin: 0;
 }
 
 main {
