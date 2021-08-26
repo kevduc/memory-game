@@ -3,11 +3,14 @@ class Card {
     this.cardElement = cardElement
     this.backElement = cardElement.querySelector('[class*=back]')
 
-    this.flipped = false
-    this.selected = false
-    this.disabled = false
-
     this.id = null
+
+    this.state = {
+      flipped: false,
+      selected: false,
+      disabled: false,
+      found: false,
+    }
   }
 
   setId(id) {
@@ -18,49 +21,59 @@ class Card {
     this.backElement.style.backgroundImage = `url(${url})`
   }
 
-  updateClass(stateName) {
-    this.cardElement.classList[this[stateName] ? 'add' : 'remove'](`card--${stateName}`)
+  updateClass(name) {
+    this.cardElement.classList[this.state[name] ? 'add' : 'remove'](`card--${name}`)
   }
 
   render() {
-    ;['selected', 'disabled', 'flipped'].forEach((stateName) => this.updateClass(stateName))
+    Object.keys(this.state).forEach((key) => this.updateClass(key))
   }
 
-  setState(stateName, value) {
-    this[stateName] = value
+  setState(state) {
+    this.state = { ...this.state, ...state }
     this.render()
   }
 
   flip() {
-    this.setState('flipped', !this.flipped)
-    this.setState('disabled', this.flipped)
+    const { flipped } = this.state
+    this.setState({ flipped: !flipped, disabled: flipped })
   }
 
   static zIndex = 0
 
   select() {
-    this.setState('selected', true)
+    this.setState({ selected: true })
     this.cardElement.style.setProperty('z-index', ++Card.zIndex)
   }
 
   deselect() {
-    this.setState('selected', false)
+    this.setState({ selected: false })
+
     this.cardElement.style.removeProperty('z-index')
   }
 
   enable() {
-    this.setState('disabled', false)
+    this.setState({ disabled: false })
   }
 
   disable() {
-    this.setState('disabled', true)
+    this.setState({ disabled: true })
   }
 
   click() {
-    if (this.disabled) return false
+    const { disabled } = this.state
+    if (disabled) return false
     this.select()
     this.flip()
     return true
+  }
+
+  found() {
+    this.setState({ found: true })
+  }
+
+  is(state) {
+    return this.state[state]
   }
 
   // For debug

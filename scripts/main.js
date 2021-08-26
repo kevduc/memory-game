@@ -77,7 +77,7 @@ function cardClick(card) {
   if (numCardsClicked >= 2) {
     processing = true
 
-    const remainingCards = cards.filter((card) => !card.disabled)
+    const remainingCards = cards.filter((card) => !card.is('disabled'))
     remainingCards.forEach((card) => card.disable())
 
     const cleanUp = () => {
@@ -91,7 +91,10 @@ function cardClick(card) {
     if (cardsClicked[0].id === cardsClicked[1].id) {
       score.add(1)
 
-      setTimeout(cleanUp, 1000)
+      setTimeout(() => {
+        cardsClicked.forEach((card) => card.found())
+        setTimeout(cleanUp, 500)
+      }, 1000)
     } else {
       tries.add(1)
 

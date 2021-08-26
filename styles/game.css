@@ -127,4 +127,25 @@
   /* background-image: url('https://picsum.photos/500/500'); */
 
   transform: rotateZ(5deg) rotateX(180deg) translateX(-6%) translateY(-0.5%);
+
+  display: grid;
+  place-content: end;
+}
+
+.card__face--back::after {
+  content: '✔️';
+  font-size: calc(0.1 * var(--card-size-w));
+  padding: calc(0.05 * var(--card-size-w));
+  color: var(--theme-primary);
+
+  opacity: 0;
+
+  transition: opacity 100ms ease-in-out, transform 300ms ease-in-out;
+}
+
+.card--found .card__face--back::after {
+  opacity: 1;
+  transform: scale(1.2);
+
+  /* transition: opacity 100ms ease-in-out, transform 100ms ease-in-out; */
 }
