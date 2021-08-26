@@ -52,7 +52,6 @@ function createCards(n, cardTemplateElement) {
   while (true) {
     let card = (cards[i] = new Card(cardElement))
     cardElement.addEventListener('click', () => cardClick(card))
-    card.enable()
 
     if (++i === n) break
 
@@ -78,7 +77,7 @@ function cardClick(card) {
   if (numCardsClicked >= 2) {
     processing = true
 
-    const remainingCards = cards.filter((card) => card.enabled)
+    const remainingCards = cards.filter((card) => !card.disabled)
     remainingCards.forEach((card) => card.disable())
 
     const cleanUp = () => {

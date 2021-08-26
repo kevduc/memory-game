@@ -5,7 +5,7 @@ class Card {
 
     this.flipped = false
     this.selected = false
-    this.enabled = true
+    this.disabled = false
 
     this.id = null
   }
@@ -23,7 +23,7 @@ class Card {
   }
 
   render() {
-    ;['selected', 'enabled', 'flipped'].forEach((stateName) => this.updateClass(stateName))
+    ;['selected', 'disabled', 'flipped'].forEach((stateName) => this.updateClass(stateName))
   }
 
   setState(stateName, value) {
@@ -33,7 +33,7 @@ class Card {
 
   flip() {
     this.setState('flipped', !this.flipped)
-    this.setState('enabled', !this.flipped)
+    this.setState('disabled', this.flipped)
   }
 
   static zIndex = 0
@@ -49,15 +49,15 @@ class Card {
   }
 
   enable() {
-    this.setState('enabled', true)
+    this.setState('disabled', false)
   }
 
   disable() {
-    this.setState('enabled', false)
+    this.setState('disabled', true)
   }
 
   click() {
-    if (!this.enabled) return false
+    if (this.disabled) return false
     this.select()
     this.flip()
     return true
@@ -65,7 +65,7 @@ class Card {
 
   // For debug
   show() {
-    this.cardElement.style.outline = '5px solid red'
+    this.cardElement.style.outline = '4px solid red'
     setTimeout(() => {
       this.cardElement.style.outline = ''
     }, 1500)
