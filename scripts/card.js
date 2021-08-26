@@ -22,13 +22,13 @@ class Card {
     this.cardElement.classList[this[stateName] ? 'add' : 'remove'](`card--${stateName}`)
   }
 
-  updateDisplay() {
+  render() {
     ;['selected', 'enabled', 'flipped'].forEach((stateName) => this.updateClass(stateName))
   }
 
   setState(stateName, value) {
     this[stateName] = value
-    this.updateDisplay()
+    this.render()
   }
 
   flip() {

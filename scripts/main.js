@@ -1,12 +1,13 @@
 import { randUniq } from './utils.js'
 import { fetchImages } from './images.js'
 
-import Card from './card.js'
+import Card from './Card.js'
+import NumberDisplay from './NumberDisplay.js'
 // import Game from "./game.js"
 
 let cards = []
-let score = 0
-let tries = 0
+let score = null
+let tries = null
 
 document.addEventListener('DOMContentLoaded', async () => {
   const numCards = 24
@@ -18,11 +19,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   const cardTemplate = document.querySelector('.card')
   cards = createCards(numCards, cardTemplate)
 
+  score = new NumberDisplay(document.querySelector('.score'))
+  tries = new NumberDisplay(document.querySelector('.tries'))
+
   gameInit(cards, images)
 })
 
 function gameInit(cards, images) {
-  score = 0
+  score.setValue(0)
 
   const randomIndexes = randUniq(cards.length)
 
@@ -84,12 +88,11 @@ function cardClick(card) {
     numCardsClicked = 0
 
     if (cardsClicked[0].id === cardsClicked[1].id) {
-      score++
-      updateScoreDisplay()
+      score.add(1)
 
       setTimeout(cleanUp, 1000)
     } else {
-      tries++
+      tries.add(1)
       console.log(`Tries: ${tries}`)
 
       setTimeout(() => {
@@ -98,10 +101,4 @@ function cardClick(card) {
       }, 1500)
     }
   }
-}
-
-const scoreDisplay = document.querySelector('.score')
-
-function updateScoreDisplay() {
-  scoreDisplay.innerText = score
 }

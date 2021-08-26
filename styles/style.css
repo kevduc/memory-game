@@ -38,6 +38,7 @@ header {
   /* border-bottom: 1px solid #bbb; */
 
   padding: 1rem 1rem;
+  gap: 1rem;
 
   display: flex;
   justify-content: space-between;
@@ -45,7 +46,9 @@ header {
 }
 
 .title {
-  white-space: nowrap;
+  /* white-space: nowrap; */
+  font-size: min(5vw, 1.5rem);
+  text-align: center;
 }
 
 h1,
@@ -77,6 +80,8 @@ footer {
   background-color: var(--theme-primary);
   color: var(--theme-on-primary);
   /* border-top: 1px solid #bbb; */
+  
+  font-size: min(4vw, 1rem);
 }
 
 footer a {
@@ -109,12 +114,12 @@ footer a {
 }
 
 .external-links svg {
-  width: 1.4rem;
-  height: 1.4rem;
+  width: min(6vw, 1.4rem);
+  height: min(6vw, 1.4rem);
   display: block;
 }
 
 .mention {
-  font-size: small;
+  font-size: smaller;
   text-align: right;
 }
