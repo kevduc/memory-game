@@ -1,6 +1,6 @@
 :root {
-  --grid-cols: 4;
-  --grid-rows: 6;
+  --grid-cols: 3;
+  --grid-rows: 8;
 
   --grid-gap-ratio: 0.1;
   --card-size-w: calc(95vw / (var(--grid-cols) + (var(--grid-cols) + 1) * var(--grid-gap-ratio)));
@@ -10,16 +10,21 @@
   --card-gap: calc(var(--grid-gap-ratio) * var(--card-size));
 }
 
-@media (min-aspect-ratio: 70/100) {
-  /* Just under 3/4 (75/100), to avoid glitches */
+@media (min-aspect-ratio: 3/8) {
   :root {
-    --grid-cols: 5;
-    --grid-rows: 5;
+    --grid-cols: 4;
+    --grid-rows: 6;
   }
 }
 
-@media (min-aspect-ratio: 135/100) {
-  /* Just above 4/3 (133/100), to avoid glitches */
+@media (min-aspect-ratio: 6/7) {
+  :root {
+    --grid-cols: 6;
+    --grid-rows: 4;
+  }
+}
+
+@media (min-aspect-ratio: 8/5) {
   :root {
     --grid-cols: 8;
     --grid-rows: 3;
@@ -28,7 +33,7 @@
 
 .stats {
   padding: 0.2rem 0.4rem;
-  font-size: min(4.5vw, 1.25rem);
+  font-size: min(5vw, 1.25rem);
 
   color: var(--theme-on-primary);
   background-color: var(--theme-primary);

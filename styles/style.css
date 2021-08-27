@@ -46,7 +46,7 @@ header {
 
 .title {
   /* white-space: nowrap; */
-  font-size: min(5vw, 1.5rem);
+  font-size: min(6vw, 1.5rem);
   text-align: center;
   margin-left: 0.2rem;
   margin-right: 0.2rem;
@@ -82,7 +82,7 @@ footer {
   color: var(--theme-on-primary);
   /* border-top: 1px solid #bbb; */
   
-  font-size: min(4vw, 1rem);
+  font-size: min(5vw, 1rem);
 }
 
 footer a {
@@ -99,10 +99,13 @@ footer a {
   align-items: flex-end;
 }
 
+.legal {
+  margin: auto 0;
+}
+
 .copyright,
 .author {
   white-space: nowrap;
-  margin: auto 0;
 }
 
 .external-links {
@@ -115,8 +118,8 @@ footer a {
 }
 
 .external-links svg {
-  width: min(6vw, 1.4rem);
-  height: min(6vw, 1.4rem);
+  width: min(8vw, 1.4rem);
+  height: min(8vw, 1.4rem);
   display: block;
 }
 
