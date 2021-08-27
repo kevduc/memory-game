@@ -32,7 +32,7 @@
   :root {
     --grid-cols: 8;
     --grid-rows: 3;
-    --check-size-factor: 0.1;
+    --check-size-factor: 0.11;
   }
 }
 
