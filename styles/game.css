@@ -150,27 +150,42 @@
 
   transform: rotateZ(5deg) rotateX(180deg) translateX(-6%) translateY(-0.5%);
 
-  display: grid;
-  place-content: end;
+  position: relative;
 }
 
+.card__face--back::before,
 .card__face--back::after {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
   content: '✔️';
   font-size: calc(var(--check-size-factor) * var(--card-size));
   margin: calc(0.06 * var(--card-size));
-  color: rgb(var(--theme-primary));
-  background-color: rgba(var(--theme-on-primary) / 0.5);
-  border-radius: 100%;
+
+  color: transparent;
 
   opacity: 0;
 
-  transition: opacity 100ms ease-in-out, transform 300ms ease-in-out;
-  transform: scale(0.8);
+  transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+  transform: scale(0.9);
 }
 
+.card--found .card__face--back::before,
 .card--found .card__face--back::after {
   opacity: 1;
   transform: scale(1.2);
 
   /* transition: opacity 100ms ease-in-out, transform 100ms ease-in-out; */
+}
+
+.card__face--back::before {
+  background-color: rgba(var(--theme-on-primary) / 0.5);
+  border-radius: 100%;
+}
+
+.card__face--back::after {
+  background-color: rgb(var(--theme-primary));
+  background-clip: text;
+  -webkit-background-clip: text;
 }
