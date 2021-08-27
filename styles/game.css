@@ -8,6 +8,8 @@
 
   --card-size: min(var(--card-size-w), var(--card-size-h));
   --card-gap: calc(var(--grid-gap-ratio) * var(--card-size));
+
+  --check-factor: 0.3;
 }
 
 @media (min-aspect-ratio: 3/8) {
@@ -21,6 +23,7 @@
   :root {
     --grid-cols: 6;
     --grid-rows: 4;
+    --check-factor: 0.2;
   }
 }
 
@@ -79,7 +82,7 @@
   .card:not(.card--disabled) .card__face--front:hover {
     transition: transform 100ms ease-in-out, box-shadow 100ms ease-out; /* Only for the card hover animation */
 
-    box-shadow: 0 0 9px 6px var(--theme-primary);
+    box-shadow: 0 0 calc(0.05 * var(--card-size)) calc(0.05 * var(--card-size)) var(--theme-primary);
     transform: scale(1.05);
   }
 }
@@ -108,9 +111,9 @@
 .card__face {
   position: absolute;
 
-  border: 3px solid var(--theme-on-primary);
+  border: calc(0.03 * var(--card-size)) solid var(--theme-on-primary);
   border-radius: inherit;
-  box-shadow: 0 0 0 2px var(--theme-primary);
+  box-shadow: 0 0 0 calc(0.02 * var(--card-size)) var(--theme-primary);
 
   width: 100%;
   height: 100%;
@@ -139,8 +142,8 @@
 
 .card__face--back::after {
   content: '✔️';
-  font-size: calc(0.1 * var(--card-size-w));
-  padding: calc(0.05 * var(--card-size-w));
+  font-size: calc(var(--check-factor) * var(--card-size));
+  padding: calc(0.05 * var(--card-size));
   color: var(--theme-primary);
 
   opacity: 0;
