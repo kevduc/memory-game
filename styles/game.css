@@ -9,7 +9,7 @@
   --card-size: min(var(--card-size-w), var(--card-size-h));
   --card-gap: calc(var(--grid-gap-ratio) * var(--card-size));
 
-  --check-factor: 0.3;
+  --check-size-factor: 0.3;
 }
 
 @media (min-aspect-ratio: 3/8) {
@@ -23,7 +23,7 @@
   :root {
     --grid-cols: 6;
     --grid-rows: 4;
-    --check-factor: 0.2;
+    --check-size-factor: 0.2;
   }
 }
 
@@ -31,6 +31,7 @@
   :root {
     --grid-cols: 8;
     --grid-rows: 3;
+    --check-size-factor: 0.16;
   }
 }
 
@@ -142,7 +143,7 @@
 
 .card__face--back::after {
   content: '✔️';
-  font-size: calc(var(--check-factor) * var(--card-size));
+  font-size: calc(var(--check-size-factor) * var(--card-size));
   padding: calc(0.05 * var(--card-size));
   color: var(--theme-primary);
 
