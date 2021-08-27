@@ -80,20 +80,25 @@
   transform-origin: center var(--rotation-origin);
 }
 
-.card--disabled {
-  pointer-events: none;
+.card--selected {
+  z-index: 100;
 }
 
-.card--flipped .card__face--front {
-  transition: transform calc(var(--duration) / 2) ease-in-out; /* Animation should be done scaling down when the card changes side (at half the duration of the card animation) */
+.card--disabled {
+  pointer-events: none;
 }
 
 .card--flipped {
   transform: rotateZ(5deg) rotateX(180deg) translateY(calc(2 * var(--rotation-origin) - 100%));
 }
 
-.card--selected {
-  z-index: 100;
+.card--flipped .card__face--front {
+  transition: transform calc(var(--duration) / 2) ease-in-out; /* Animation should be done scaling down when the card changes side (at half the duration of the card animation) */
+  box-shadow: none; /* Fix: Firefox not hiding box-shadow when front-face is turned around */
+}
+
+.card--selected .card__face--front {
+  transition: box-shadow 0.5s ease-in; /* Fix: Firefox not hiding box-shadow when front-face is turned around */
 }
 
 .card__face {
