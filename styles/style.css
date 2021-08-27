@@ -33,12 +33,23 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
+  position: relative;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(var(--theme-primary) / 0.5);
+  z-index: -1;
 }
 
 header {
-  background-color: rgba(var(--theme-primary) / 0.5);
   color: rgb(var(--theme-on-primary));
-  /* border-bottom: 1px solid #bbb; */
 
   --gap: min(3.5vw, 1rem);
   padding: var(--gap);
@@ -69,8 +80,7 @@ main {
   display: grid;
   place-content: center;
 
-  background-color: rgba(var(--theme-secondary) / 0.5);
-  background: linear-gradient(125deg, rgba(var(--theme-secondary) / 0.5), rgba(var(--theme-primary) / 0.5) 200%);
+  /* background: linear-gradient(125deg, rgba(var(--theme-secondary) / 0.5), rgba(var(--theme-primary) / 0.5) 200%); */
 }
 
 footer {
@@ -83,7 +93,6 @@ footer {
   justify-content: space-between;
   gap: min(3.2vw, 0.8rem);
 
-  background-color: rgba(var(--theme-primary) / 0.5);
   color: rgb(var(--theme-on-primary));
   /* border-top: 1px solid #bbb; */
 
