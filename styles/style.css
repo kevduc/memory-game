@@ -1,8 +1,8 @@
 :root {
-  --theme-primary: rgb(57, 104, 73);
-  --theme-secondary: rgb(195, 209, 198);
-  --theme-on-primary: white;
-  --theme-on-secondary: black;
+  --theme-primary: 57 104 73;
+  --theme-secondary: 195 209 198;
+  --theme-on-primary: 255 255 255;
+  --theme-on-secondary: 0 0 0;
 }
 
 *,
@@ -14,7 +14,7 @@
 }
 
 a {
-  color: var(--theme-primary);
+  color: rgb(var(--theme-primary));
 }
 
 html,
@@ -28,11 +28,16 @@ body {
 body {
   display: flex;
   flex-direction: column;
+
+  background-image: url('../images/background.jpg'); /* Photo (https://unsplash.com/photos/ObpCE_X3j6U) by Sean Stratton (https://unsplash.com/@seanstratton) on Unsplash (https://unsplash.com/s/photos/zen) */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 header {
-  background-color: var(--theme-primary);
-  color: var(--theme-on-primary);
+  background-color: rgba(var(--theme-primary) / 0.5);
+  color: rgb(var(--theme-on-primary));
   /* border-bottom: 1px solid #bbb; */
 
   --gap: min(3.5vw, 1rem);
@@ -64,8 +69,8 @@ main {
   display: grid;
   place-content: center;
 
-  background-color: var(--theme-secondary);
-  background: linear-gradient(125deg, var(--theme-secondary), var(--theme-primary) 200%);
+  background-color: rgba(var(--theme-secondary) / 0.5);
+  background: linear-gradient(125deg, rgba(var(--theme-secondary) / 0.5), rgba(var(--theme-primary) / 0.5) 200%);
 }
 
 footer {
@@ -78,16 +83,16 @@ footer {
   justify-content: space-between;
   gap: min(3.2vw, 0.8rem);
 
-  background-color: var(--theme-primary);
-  color: var(--theme-on-primary);
+  background-color: rgba(var(--theme-primary) / 0.5);
+  color: rgb(var(--theme-on-primary));
   /* border-top: 1px solid #bbb; */
-  
+
   font-size: min(5vw, 1rem);
 }
 
 footer a {
   white-space: nowrap;
-  color: var(--theme-on-primary);
+  color: rgb(var(--theme-on-primary));
 }
 
 .info {

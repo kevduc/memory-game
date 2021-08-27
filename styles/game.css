@@ -16,7 +16,7 @@
   :root {
     --grid-cols: 4;
     --grid-rows: 6;
-    --check-size-factor: 0.20;
+    --check-size-factor: 0.2;
   }
 }
 
@@ -37,11 +37,11 @@
 }
 
 .stats {
-  padding: 0.2rem 0.4rem;
+  padding: 0.2rem 0.5rem 0.35rem 0.5rem;
   font-size: min(5vw, 1.25rem);
 
-  color: var(--theme-on-primary);
-  background-color: var(--theme-primary);
+  color: rgb(var(--theme-on-primary));
+  background-color: rgba(var(--theme-primary) / 0.3);
 
   border-radius: 0.5rem;
 }
@@ -80,20 +80,6 @@
   transform-origin: center var(--rotation-origin);
 }
 
-@media (hover: hover) {
-  .card:not(.card--disabled) .card__face--front:hover {
-    transition: transform 100ms ease-in-out, box-shadow 100ms ease-out; /* Only for the card hover animation */
-
-    box-shadow: 0 0 calc(0.05 * var(--card-size)) calc(0.05 * var(--card-size)) var(--theme-primary);
-    transform: scale(1.05);
-  }
-}
-
-/* .card__face--front:active {
-  transition: transform 300ms ease-in-out, box-shadow 100ms ease-out !important;
-  transform: rotateZ(0.2deg) scale(1.05) rotateX(10deg) translateY(3%) !important;
-} */
-
 .card--disabled {
   pointer-events: none;
 }
@@ -113,9 +99,9 @@
 .card__face {
   position: absolute;
 
-  border: calc(0.02 * var(--card-size)) solid var(--theme-on-primary);
+  border: calc(0.02 * var(--card-size)) solid rgb(var(--theme-on-primary));
   border-radius: inherit;
-  box-shadow: 0 0 0 calc(0.02 * var(--card-size)) var(--theme-primary);
+  box-shadow: 0 0 0 calc(0.02 * var(--card-size)) rgb(var(--theme-primary));
 
   width: 100%;
   height: 100%;
@@ -128,12 +114,33 @@
 }
 
 .card__face--front {
-  background-color: var(--theme-primary);
-  background-image: url('../images/card-back.jpg'); /* Photo https://unsplash.com/photos/FnZKE3owM1o by Omid Armin https://unsplash.com/@omidarmin on Unsplash https://unsplash.com/ */
+  background-color: rgb(var(--theme-primary));
+  background-image: url('../images/card-back.jpg'); /* Photo (https://unsplash.com/photos/FnZKE3owM1o) by Omid Armin (https://unsplash.com/@omidarmin) on Unsplash (https://unsplash.com/) */
+  cursor: pointer;
 }
 
+@media (hover: hover) {
+  .card:not(.card--disabled) .card__face--front:hover {
+    transition: transform 100ms ease-in-out, box-shadow 100ms ease-out; /* Only for the card hover animation */
+
+    box-shadow: 0 0 calc(0.05 * var(--card-size)) calc(0.05 * var(--card-size)) rgb(var(--theme-primary));
+    transform: scale(1.05);
+  }
+}
+
+@media (hover: none) {
+  .card__face--front {
+    -webkit-tap-highlight-color: rgba(var(--theme-secondary) / 0.05);
+  }
+}
+
+/* .card__face--front:active {
+  transition: transform 300ms ease-in-out, box-shadow 100ms ease-out !important;
+  transform: rotateZ(0.2deg) scale(1.05) rotateX(10deg) translateY(3%) !important;
+} */
+
 .card__face--back {
-  background-color: var(--theme-on-primary);
+  background-color: rgb(var(--theme-on-primary));
   /* background-image: url('https://picsum.photos/500/500'); */
 
   transform: rotateZ(5deg) rotateX(180deg) translateX(-6%) translateY(-0.5%);
@@ -146,8 +153,8 @@
   content: '✔️';
   font-size: calc(var(--check-size-factor) * var(--card-size));
   margin: calc(0.06 * var(--card-size));
-  color: var(--theme-primary);
-  background-color: rgba(255 255 255 / 0.5);
+  color: rgb(var(--theme-primary));
+  background-color: rgba(var(--theme-on-primary) / 0.5);
   border-radius: 100%;
 
   opacity: 0;
