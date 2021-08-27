@@ -112,7 +112,7 @@
 .card__face {
   position: absolute;
 
-  border: calc(0.03 * var(--card-size)) solid var(--theme-on-primary);
+  border: calc(0.02 * var(--card-size)) solid var(--theme-on-primary);
   border-radius: inherit;
   box-shadow: 0 0 0 calc(0.02 * var(--card-size)) var(--theme-primary);
 
@@ -144,7 +144,7 @@
 .card__face--back::after {
   content: '✔️';
   font-size: calc(var(--check-size-factor) * var(--card-size));
-  padding: calc(0.05 * var(--card-size));
+  padding: calc(0.07 * var(--card-size));
   color: var(--theme-primary);
 
   opacity: 0;
