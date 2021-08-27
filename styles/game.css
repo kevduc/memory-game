@@ -9,14 +9,14 @@
   --card-size: min(var(--card-size-w), var(--card-size-h));
   --card-gap: calc(var(--grid-gap-ratio) * var(--card-size));
 
-  --check-size-factor: 0.22;
+  --check-size-factor: 0.20;
 }
 
 @media (min-aspect-ratio: 3/8) {
   :root {
     --grid-cols: 4;
     --grid-rows: 6;
-    --check-size-factor: 0.2;
+    --check-size-factor: 0.17;
   }
 }
 
@@ -24,7 +24,7 @@
   :root {
     --grid-cols: 6;
     --grid-rows: 4;
-    --check-size-factor: 0.17;
+    --check-size-factor: 0.13;
   }
 }
 
@@ -32,16 +32,16 @@
   :root {
     --grid-cols: 8;
     --grid-rows: 3;
-    --check-size-factor: 0.14;
+    --check-size-factor: 0.1;
   }
 }
 
 .stats {
-  padding: 0.2rem 0.5rem 0.35rem 0.5rem;
+  padding: 0.2rem 0.6rem 0.35rem 0.6rem;
   font-size: min(5vw, 1.25rem);
 
   color: rgb(var(--theme-on-primary));
-  background-color: rgba(var(--theme-primary) / 0.3);
+  background-color: rgba(var(--theme-primary) / 0.35);
 
   border-radius: 0.5rem;
 }
@@ -126,10 +126,10 @@
 
 @media (hover: hover) {
   .card:not(.card--disabled) .card__face--front:hover {
-    transition: transform 100ms ease-in-out, box-shadow 100ms ease-out; /* Only for the card hover animation */
-
-    box-shadow: 0 0 calc(0.05 * var(--card-size)) calc(0.05 * var(--card-size)) rgb(var(--theme-primary));
-    transform: scale(1.05);
+    transition: transform 200ms ease-in-out, box-shadow 200ms ease-out; /* Only for the card hover animation */
+    
+    box-shadow: 0 calc(0.06 * var(--card-size)) calc(0.03 * var(--card-size)) calc(0.01 * var(--card-size)) rgb(var(--theme-on-secondary) / 0.2);
+    transform: scale(1.05) translateY(-3%);
   }
 }
 
@@ -139,14 +139,8 @@
   }
 }
 
-/* .card__face--front:active {
-  transition: transform 300ms ease-in-out, box-shadow 100ms ease-out !important;
-  transform: rotateZ(0.2deg) scale(1.05) rotateX(10deg) translateY(3%) !important;
-} */
-
 .card__face--back {
   background-color: rgb(var(--theme-on-primary));
-  /* background-image: url('https://picsum.photos/500/500'); */
 
   transform: rotateZ(5deg) rotateX(180deg) translateX(-6%) translateY(-0.5%);
 
@@ -168,24 +162,30 @@
   opacity: 0;
 
   transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
-  transform: scale(0.9);
+  transform: scale(0.8);
 }
 
 .card--found .card__face--back::before,
 .card--found .card__face--back::after {
   opacity: 1;
-  transform: scale(1.2);
-
   /* transition: opacity 100ms ease-in-out, transform 100ms ease-in-out; */
 }
 
+.card--found .card__face--back::before {
+  transform: scale(1.2);
+}
+
+.card--found .card__face--back::after {
+  transform: scale(1);
+}
+
 .card__face--back::before {
-  background-color: rgba(var(--theme-on-primary) / 0.5);
+  background: rgba(var(--theme-on-secondary) / 0.5);
   border-radius: 100%;
 }
 
 .card__face--back::after {
-  background-color: rgb(var(--theme-primary));
+  background-color: rgb(var(--theme-secondary));
   background-clip: text;
   -webkit-background-clip: text;
 }

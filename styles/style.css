@@ -44,7 +44,7 @@ body::after {
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(var(--theme-primary) / 0.5);
+  background-color: rgba(76 96 80 / 0.5);
   z-index: -1;
 }
 
