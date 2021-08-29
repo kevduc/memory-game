@@ -10,7 +10,7 @@ let score = null
 let tries = null
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const numCards = 24
+  const numCards = 12
   const numImages = numCards / 2
   const imageSize = 500 //px
 

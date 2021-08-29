@@ -1,10 +1,10 @@
 :root {
-  --grid-cols: 3;
-  --grid-rows: 8;
+  --grid-cols: 2;
+  --grid-rows: 6;
 
   --grid-gap-ratio: 0.1;
   --card-size-w: calc(95vw / (var(--grid-cols) + (var(--grid-cols) + 1) * var(--grid-gap-ratio)));
-  --card-size-h: calc((90vh - 4rem) / (var(--grid-rows) + (var(--grid-rows) + 1) * var(--grid-gap-ratio)));
+  --card-size-h: calc((87vh - 4rem) / (var(--grid-rows) + (var(--grid-rows) + 1) * var(--grid-gap-ratio)));
 
   --card-size: min(var(--card-size-w), var(--card-size-h));
   --card-gap: calc(var(--grid-gap-ratio) * var(--card-size));
@@ -12,26 +12,26 @@
   --check-size-factor: 0.20;
 }
 
-@media (min-aspect-ratio: 3/8) {
+@media (min-aspect-ratio: 5/12) {
   :root {
-    --grid-cols: 4;
-    --grid-rows: 6;
+    --grid-cols: 3;
+    --grid-rows: 4;
     --check-size-factor: 0.17;
   }
 }
 
 @media (min-aspect-ratio: 6/7) {
   :root {
-    --grid-cols: 6;
-    --grid-rows: 4;
+    --grid-cols: 4;
+    --grid-rows: 3;
     --check-size-factor: 0.13;
   }
 }
 
-@media (min-aspect-ratio: 8/5) {
+@media (min-aspect-ratio: 6/4) {
   :root {
-    --grid-cols: 8;
-    --grid-rows: 3;
+    --grid-cols: 6;
+    --grid-rows: 2;
     --check-size-factor: 0.11;
   }
 }
