@@ -4,7 +4,7 @@
 
   --grid-gap-ratio: 0.1;
   --card-size-w: calc(95vw / (var(--grid-cols) + (var(--grid-cols) + 1) * var(--grid-gap-ratio)));
-  --card-size-h: calc((80vh - 4rem) / (var(--grid-rows) + (var(--grid-rows) + 1) * var(--grid-gap-ratio)));
+  --card-size-h: calc((90vh - 4rem) / (var(--grid-rows) + (var(--grid-rows) + 1) * var(--grid-gap-ratio)));
 
   --card-size: min(var(--card-size-w), var(--card-size-h));
   --card-gap: calc(var(--grid-gap-ratio) * var(--card-size));
